@@ -22,15 +22,18 @@
             <a routerLink="/all-recipes">View All</a>
         </div>
         <div class="row my-3">
-            <!-- each recipe card -->
-            <div class="col-lg-4">
-                <div class="p-3">
-                    <img class="card-img-top" src="https://www.pngall.com/wp-content/uploads/2/Healthy-Meal.png" alt="">
-                    <div class="card-body">
-                        <h5 class="card-title">Name</h5>
+            @for (recipe of allRecipes; track $index) {
+                <!-- each recipe card -->
+                <div class="col-lg-4">
+                    <div class="p-3">
+                        <img class="card-img-top" [src]="recipe.image" alt="">
+                        <div class="card-body">
+                            <h5 class="card-title">{{recipe.name}}</h5>
+                        </div>
                     </div>
                 </div>
-            </div>
+            }
+            
         </div>
      </div>
     <!-- banner -->

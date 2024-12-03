@@ -1,12 +1,44 @@
 import { Component } from '@angular/core';
+import { HeaderComponent } from '../header/header.component';
+import { FooterComponent } from '../footer/footer.component';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-recipes',
   standalone: true,
-  imports: [],
+  imports: [HeaderComponent,FooterComponent],
   templateUrl: './recipes.component.html',
   styleUrl: './recipes.component.css'
 })
 export class RecipesComponent {
+  allRecipes:any = []
+  cuisineArray:any = []
+  mealTypeArray:any = []
 
+  constructor(private api:ApiService){}
+
+  ngOnInit(){
+    this.getAllRecipes()
+  }
+
+  getAllRecipes(){
+    this.api.getAllRecipeAPI().subscribe((res:any)=>{
+      this.allRecipes = res
+      console.log(this.allRecipes);
+      this.allRecipes.forEach((item:any)=>{
+        !this.cuisineArray.includes(item.cuisine) && this.cuisineArray.push(item.cuisine)
+      })
+      console.log(this.cuisineArray);  
+      const dummyMeal = this.allRecipes.map((item:any)=>item.mealType)    
+      console.log(dummyMeal.flat(Infinity));  
+      const flatDummyArray = dummyMeal.flat(Infinity)
+      flatDummyArray.forEach((item:any)=>{
+        !this.mealTypeArray.includes(item) && this.mealTypeArray.push(item)
+      })
+      console.log(this.mealTypeArray);
+      
+    })
+  }
+
+  
 }
