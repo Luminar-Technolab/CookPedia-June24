@@ -2,16 +2,22 @@ import { Component } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
 import { ApiService } from '../services/api.service';
+import { SearchPipe } from '../pipes/search.pipe';
+import { FormsModule } from '@angular/forms';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @Component({
   selector: 'app-recipes',
   standalone: true,
-  imports: [HeaderComponent,FooterComponent],
+  imports: [HeaderComponent,FooterComponent,SearchPipe,FormsModule,NgxPaginationModule],
   templateUrl: './recipes.component.html',
   styleUrl: './recipes.component.css'
 })
 export class RecipesComponent {
+  p: number = 1;
+  searchKey:string = ""
   allRecipes:any = []
+  dummyAllRecipes:any = []
   cuisineArray:any = []
   mealTypeArray:any = []
 
@@ -24,6 +30,7 @@ export class RecipesComponent {
   getAllRecipes(){
     this.api.getAllRecipeAPI().subscribe((res:any)=>{
       this.allRecipes = res
+      this.dummyAllRecipes = this.allRecipes
       console.log(this.allRecipes);
       this.allRecipes.forEach((item:any)=>{
         !this.cuisineArray.includes(item.cuisine) && this.cuisineArray.push(item.cuisine)
@@ -40,5 +47,8 @@ export class RecipesComponent {
     })
   }
 
+  filterAllRecipes(key:string,value:string){
+    this.allRecipes = this.dummyAllRecipes.filter((item:any)=>item[key].includes(value))
+  }
   
 }
