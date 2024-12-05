@@ -31,7 +31,7 @@ export class ContactComponent {
       const message =  this.testimonyForm.value.message
       // alert(`${name},${email},${message}`);
       this.api.addTestimonyAPI({name,email,message}).subscribe((res:any)=>{
-        alert("Tank you for your valuable feedback!!!")
+        alert("Thank you for your valuable feedback!!!")
         this.testimonyForm.reset()
       })
     }else{
