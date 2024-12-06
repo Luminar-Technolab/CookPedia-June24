@@ -899,6 +899,7 @@
             - 'routerLink' property used to redirect from one html page to another in angular app without refreshing the page
             - set up dynamic routing : use column along with variable of url
             - set up page not found : use path as **
+            - to access dynamic values from a url : use ActivatedRoute class
         19. Parent-Child Component Data shairing
             - parent to child data shairing : only parent properties shared with child , to access parent data in child , first child should create property and it uses Input Decorators, Input Decorators is used to get data from parent in child
             - child to parent data shairing : only child events shared with parent, to share events from child it uses @Output Decorators
