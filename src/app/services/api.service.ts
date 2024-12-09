@@ -47,4 +47,13 @@ export class ApiService {
     return this.http.get(`${this.server_url}/related-recipes?cuisine=${cuisine}`,this.appendToken())
   }
 
+  //recipe/674ecf05aacb30395882815f/download
+  downloadRecipeAPI(recipeId:string,reqBody:any){
+    return this.http.post(`${this.server_url}/recipe/${recipeId}/download`,reqBody,this.appendToken())
+  }
+  //recipe/:id/save
+  saveRecipeAPI(recipeId:string,reqBody:any){
+    return this.http.post(`${this.server_url}/recipe/${recipeId}/save`,reqBody,this.appendToken())
+  }
+
 }
