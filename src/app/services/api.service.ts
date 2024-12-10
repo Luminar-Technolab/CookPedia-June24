@@ -56,4 +56,24 @@ export class ApiService {
     return this.http.post(`${this.server_url}/recipe/${recipeId}/save`,reqBody,this.appendToken())
   }
 
+  //get-save-recipes
+  getUserSaveRecipesAPI(){
+    return this.http.get(`${this.server_url}/get-save-recipes`,this.appendToken())
+  }
+
+  //save-recipes/6756c4a46917775a90386a45/remove
+  deleteSaveRecipeAPI(id:string){
+    return this.http.delete(`${this.server_url}/save-recipes/${id}/remove`,this.appendToken())
+  }
+
+  //user-downloads
+  getUserDownloadRecipesAPI(){
+    return this.http.get(`${this.server_url}/user-downloads`,this.appendToken())
+  }
+
+  //user/edit
+  editUserAPI(reqBody:any){
+    return this.http.post(`${this.server_url}/user/edit`,reqBody,this.appendToken())
+  }
+  
 }
