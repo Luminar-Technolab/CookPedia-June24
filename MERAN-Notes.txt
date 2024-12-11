@@ -910,6 +910,17 @@
                     - Form Group : corresponding to form tag
                     - Form Array : form input tobe stored as array
                     - Form Control : used to link html input tag with form group 
+        21. Modules : are used to group components, not standalone components they are part of Modules. we can lazy load modules in application. 
+            - Lazy Loading in Angular : loading the contents of web pages whenever it requires. It used to reduce initial website loading time
+            - Generate module in Angular with routing features : ng g m module-name --routing
+                - create file routing.module.ts : used to set up path / route for the compoenents inside the module
+                - create file module.ts : used to import common packages needed for components inisde the module
+            - Generating components inside a module : ng g c module-name/component-name --no-standalone
+            - Lazy load a module in Angular : define lazy load steps inside app.routes.ts (root routing) file , use the following command 
+                - set up lazy loaded path for module should be the file path in app.routes.ts file :
+                {
+                    path:'module-path',loadChildren:()=>import('module-path').then(m=>m.module-name)
+                }
 
 
 

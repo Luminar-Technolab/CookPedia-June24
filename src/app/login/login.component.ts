@@ -38,6 +38,7 @@ export class LoginComponent {
           }
           else{
             //admin panel
+            this.router.navigateByUrl("/admin")
           }
         },
         error:(reason:any)=>{
