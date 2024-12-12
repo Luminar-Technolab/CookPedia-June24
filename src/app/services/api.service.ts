@@ -85,5 +85,18 @@ export class ApiService {
   allDownloadListAPI(){
     return this.http.get(`${this.server_url}/download-list`,this.appendToken())
   }
-  
+  //all-feedback
+  getallFeedbackListAPI(){
+    return this.http.get(`${this.server_url}/all-feedback`,this.appendToken())
+  }
+  //feedback/6750283f6e6c436259862c60/update?status=Approved
+  updateFeedbackStatusAPI(feedBackId:string,status:string){
+    return this.http.get(`${this.server_url}/feedback/${feedBackId}/update?status=${status}`,this.appendToken())
+  }
+
+  //all-approve-feedback
+  getAllApprovedFeedbackAPI(){
+    return this.http.get(`${this.server_url}/all-approve-feedback`)
+  }
+
 }
