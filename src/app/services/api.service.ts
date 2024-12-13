@@ -99,4 +99,9 @@ export class ApiService {
     return this.http.get(`${this.server_url}/all-approve-feedback`)
   }
 
+  //add-recipe
+  addRecipeAPI(reqBody:any){
+    return this.http.post(`${this.server_url}/add-recipe`,reqBody,this.appendToken())
+  }
+
 }
