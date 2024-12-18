@@ -7,7 +7,8 @@ import { RecipeModel } from '../admin/model/recipeModel';
 })
 export class ApiService {
 
-  server_url = "http://localhost:3000"
+  // server_url = "http://localhost:3000"
+  server_url = "https://cookpedia-server-june24.onrender.com"
 
   constructor(private http:HttpClient) { }
 
@@ -113,6 +114,42 @@ export class ApiService {
   //recipes/:id/remove
   deleteRecipeAPI(id:string){
     return this.http.delete(`${this.server_url}/recipes/${id}/remove`,this.appendToken())
+  }
+
+  //getChartdata
+  getChartData(){
+    this.allDownloadListAPI().subscribe((res:any)=>{
+      console.log(res);
+      let downloadArrayList:any = []
+      let output:any = {}
+      res.forEach((item:any)=>{
+        //item = {recipeCuisine: "Mexican",count:4}
+        let cuisine = item.recipeCuisine // cuisine = Mexican
+        let currentCount = item.count // currentCount = 4
+        if(output.hasOwnProperty(cuisine)){
+          output[cuisine] += currentCount
+        }else{
+          output[cuisine] = currentCount // output = {Mexican:4}
+        }
+      })
+      console.log(output);
+      for(let cuisine in output){
+        downloadArrayList.push({name:cuisine,y:output[cuisine]})
+      }
+      console.log(downloadArrayList);
+      localStorage.setItem("chart",JSON.stringify(downloadArrayList))
+      // code extracting cuisine and its total download count as object and added to an array
+      //input : [ {recipeCuisine,count} ]
+      //output : [ {name:cuisine,y:totalcount}]
+
+      //algorithm
+      //1. create an empty array for output, object for storing each array item
+      //2. get each array item of res and store its recipeCuisine & count to a variable
+      //3. check recipeCiuisne is vaialable in output object, if presenst then set the value of recipeCuisine key as total existing recipeCuisine value with new count , not present then insert recipeCuisine as key and value as its count
+      //4. push each key from output object into output array
+     
+    })
+    
   }
 
 }

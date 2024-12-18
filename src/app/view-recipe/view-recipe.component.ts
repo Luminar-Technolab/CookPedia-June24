@@ -50,6 +50,8 @@ export class ViewRecipeComponent {
 
   downloadRecipe(){
     this.api.downloadRecipeAPI(this.recipeId,this.recipe).subscribe((res:any)=>{
+      // call get chart data
+      this.api.getChartData()
       this.generatePDF()
     })
   }

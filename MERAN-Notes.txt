@@ -868,8 +868,8 @@
                 - Custom Pipes : use command - ng g p pipe-folder/pipe-name, define logic to convert data to another format inside pipe class use transform function.
         13. Service : used to share common logic between different compoenent in an angular app
             - create service : ng g s service-folder/service-name
-        14. Dependency Injection : used to access properties/ functions of a class to its dependent class, DI can be performed only between compoenent and service or compoenent and predefined class in angular. DI is performed inside the constructor argument of a class
-            - syntax : constructor(access-specifiers  variable-name:dependent-class-name){}
+        14. Dependency Injection : used to access properties/ functions of a class to its dependent class, DI can be performed only between compoenent and service or compoenent and predefined class in angular. DI is performed inside the constructor argument of a class , inside a function dependencies Injection can be performed with the help of Inject method
+            - syntax : constructor(access-specifiers  variable-name:dependent-class-name){} / const variablesName = inject(dependent-class-name)
         15. Asynchronus function handling in TypeScript : using 'Observable' to handle Asynchronus functions. Observable can resolve multiple Asynchronus function at a time where as promise can only resolve one function at a time. Angular RxJS library is used to resolve Asynchronus function. 
             - To resolve Observable to get response angular uses 'subscribe' method, subscribe method argument can be of 2 types , callback function where its argument will give you the response. otherwise we can use object , its next key value will give you success response, error key value will give server error response
         16. API call : use 'HttpClient' class methods will return Observable
@@ -931,6 +931,10 @@
                 - Update style.css file import theme used in material
             - Highcharts : to display charts in angular projects
                 - install packages : npm install highcharts-angular highcharts 
+        23. Route Guards in Angular : Used to protect route from unauthorised access. It controls navigation to a route based on whether the user is authenticated or not.
+            - Different Guards in angular
+                - CanActivate  : It helps in determining whether a route can be activated or not based on a condition
+            - To add guards to angular : ng g g guards-folder/guards-name
 
 
 
