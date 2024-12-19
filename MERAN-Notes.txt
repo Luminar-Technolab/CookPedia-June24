@@ -828,7 +828,7 @@
                     - app.routes.ts file : used to define route for each compoenent in angular app
                     - app.config.ts file : to enable routing / other features in angular app so that all compoenent can use it. 
                     - AppComponent is the root compoenent of angular app, a folder which consist of 4 files ( ts , spec.ts , html  , css file), are used to display and apply behavior to the contents in browser
-                        - ts file considered as compoenent file, to create compoenent in angular we have to create a class
+                        - ts file considered as component file, to create compoenent in angular we have to create a class
                             - selector : used to display a compoenent html view in browser, used selector as a tag in html page
                             - import array : contents in import array are used in compoenent html page
                             - templateUrl : url of component html page
@@ -894,18 +894,18 @@
                     - ngOnDestroy : 	Runs once before the component is destroyed.
         18. Setup path / route for component in Angular 
             - Define path for compoenent inside app.routes.ts file
-            - Add compoenent path in Routes array as object 
+            - Add component path in Routes array as object 
                 - syntax : { path:"compoenent-path" , component:component-name }
-            -  use router-outlet selector in root component html page insorder to switch pages according url
+            -  use router-outlet selector in root component html page inorder to switch pages according url
             - 'routerLink' property used to redirect from one html page to another in angular app without refreshing the page
-            - set up dynamic routing : use column along with variable of url
+            - set up dynamic routing : use column (:) along with variable of url
             - set up page not found : use path as **
             - to access dynamic values from a url associated with a component: 
                 - use ActivatedRoute class has params property
-                - use withComponentInputBinding(), use Input() Decorators to get dynamic variable of url in compoenent
+                - use withComponentInputBinding(), use Input() Decorators to get dynamic variable of url in component
                     - Standlone applications : Inside your app.config.ts file, pass the method withComponentInputBinding() as optional argument (make sure to actually call the function) to the provideRouter() method
                     - In NgModules  : set bindToComponentInputs: true in imports array of module
-        19. Parent-Child Component Data shairing
+        19. Parent-Child Component Data shairing : Angular support Two way binding
             - parent to child data shairing : only parent properties shared with child , to access parent data in child , first child should create property and it uses Input Decorators, Input Decorators is used to get data from parent in child
             - child to parent data shairing : only child events shared with parent, to share events from child it uses @Output Decorators
         20. Form handling in Angular
@@ -936,6 +936,17 @@
             - Different Guards in angular
                 - CanActivate  : It helps in determining whether a route can be activated or not based on a condition
             - To add guards to angular : ng g g guards-folder/guards-name
+        24. To display an image available in a project folder to the html page make sure to place images inside public folder of project
+        25. Signals : A signal is a wrapper around a value that notifies interested consumers when that value changes. Signals can contain any value, from primitives to complex data structures.
+            - Signals may be either writable or read-only.
+            - Create signal : use signal(initial-value) from angular/core
+                signal-name = signal(initial-value)
+            - To get value from a signal : signal-name()
+            - To change the signal : use set() / update()
+                - to replace signal value use :signal-name.set(value)
+                - to update signal value based on its previous value : signal-name.update(updation-function)
+            - Effects in Signals : are functions which triggered when signal changes, it has to define inside constructor method, but it execute only when signal/dependency changes
+
 
 
 
